@@ -1,0 +1,124 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.13/MicrosoftTeams.schema.json",
+    "id": "d2c17289-5195-4b1f-9g2f-8bdddef30a41",
+    "manifestVersion": "1.13",
+    "version": "1.0.1",
+    "name": {
+        "short": "VobaPay QR",
+        "full": "VobaPay Payment QR-Code"
+    },
+    "description": {
+        "short": "Erstelle Payment QR-Codes",
+        "full": "Generiert QR-Codes für VobaPay Zahlungslinks"
+    },
+    "developer": {
+        "name": "VobaPay"
+    },
+    "icons": {
+        "outline": "assets/outline.png",
+        "color": "assets/color.png"
+    },
+    "accentColor": "#230201",
+    "configurable": false,
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Document.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "localizationInfo": {
+        "defaultLanguageTag": "de-de"
+    },
+    "validDomains": [
+        "localhost:3000",
+        "payment.vobapay.com"
+    ],
+    "extensions": [
+        {
+            "requirements": {
+                "scopes": [
+                    "document"
+                ]
+            },
+            "runtimes": [
+                {
+                    "id": "TaskPaneRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/taskpane.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "TaskPaneRuntimeShow",
+                            "type": "openPage",
+                            "pinnable": false
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "contexts": [
+                        "default"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabHome",
+                            "groups": [
+                                {
+                                    "id": "vobaPayGroup",
+                                    "label": "VobaPay",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "vobaPayButton",
+                                            "type": "button",
+                                            "label": "vobapay Paymentlink",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "vobapay Paymentlink",
+                                                "description": "Payment Link als QR-Code einfügen"
+                                            },
+                                            "actionId": "TaskPaneRuntimeShow"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
